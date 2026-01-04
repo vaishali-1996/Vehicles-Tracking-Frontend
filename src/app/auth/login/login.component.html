@@ -1,0 +1,39 @@
+<div class="login-container">
+  <h2>Login</h2>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+    <div class="field">
+      <label>Email</label>
+      <input
+        type="email"
+        formControlName="email"
+        placeholder="Enter email"
+      >
+    </div>
+
+    <div class="field">
+      <label>Password</label>
+      <div class="password-box">
+        <input
+          [type]="showPassword ? 'text' : 'password'"
+          formControlName="password"
+          placeholder="Enter password"
+        >
+      </div>
+ <span class="toggle" (click)="togglePassword()">
+          {{ showPassword ? 'Hide' : 'Show' }}
+        </span>
+    </div>
+
+    <button type="submit" [disabled]="loginForm.invalid">
+      Login
+    </button>
+
+    <p class="signup-link">
+      Don’t have an account?
+      <a routerLink="/signup">Sign up</a>
+    </p>
+
+  </form>
+</div>

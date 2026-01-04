@@ -1,0 +1,24 @@
+<div class="container">
+  <h2>User Master</h2>
+
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+    <div class="row">
+      <input placeholder="Name" formControlName="name">
+      <input type="password" placeholder="Password" formControlName="password">
+    </div>
+
+    <div class="row">
+      <input placeholder="Mobile Number" formControlName="mobile">
+      <input placeholder="Email" formControlName="email">
+    </div>
+
+    <input placeholder="Organization" formControlName="organization">
+    <input placeholder="Location" formControlName="location">
+    <textarea placeholder="Address" formControlName="address"></textarea>
+
+    <button type="submit" [disabled]="userForm.invalid">
+      Save User
+    </button>
+  </form>
+</div>

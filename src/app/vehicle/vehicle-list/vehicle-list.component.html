@@ -1,0 +1,56 @@
+<div class="container">
+  <h2>Vehicle List</h2>
+
+  <!-- SEARCH FORM -->
+  <form [formGroup]="searchForm" (ngSubmit)="onSearch()" class="search-box">
+    <input
+      placeholder="Search by vehicle number, type or organisation"
+      formControlName="searchText"
+    >
+    <button type="submit">Search</button>
+  </form>
+
+  <!-- TABLE -->
+  <table>
+    <thead>
+      <tr>
+        <th>Vehicle No</th>
+        <th>Type</th>
+        <th>Model</th>
+        <th>Organisation</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let v of paginatedVehicles">
+        <td>{{ v.vehicleNumber }}</td>
+        <td>{{ v.vehicleType }}</td>
+        <td>{{ v.model }}</td>
+        <td>{{ v.organisation }}</td>
+        <td>
+          <button class="edit-btn" (click)="editVehicle(v)">Edit</button>
+        </td>
+      </tr>
+
+      <tr *ngIf="paginatedVehicles.length === 0">
+        <td colspan="5">No vehicles found</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- PAGINATION -->
+  <div class="pagination">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">
+      Prev
+    </button>
+
+    <span>Page {{ currentPage }}</span>
+
+    <button
+      (click)="nextPage()"
+      [disabled]="currentPage * pageSize >= filteredVehicles.length">
+      Next
+    </button>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="signup-container">
+  <h2>Create Account</h2>
+
+  <form (ngSubmit)="onSubmit()">
+
+    <div class="row">
+      <div class="field">
+        <label>Name</label>
+        <input formControlName="name">
+      </div>
+
+      <div class="field">
+        <label>Email</label>
+        <input formControlName="email">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Mobile Number</label>
+        <input formControlName="mobile">
+      </div>
+
+      <div class="field">
+        <label>Organization</label>
+        <input formControlName="organization">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Password</label>
+        <input type="password" formControlName="password">
+      </div>
+
+      <div class="field">
+        <label>Confirm Password</label>
+        <input type="password" formControlName="confirmPassword">
+      </div>
+    </div>
+
+    <!-- <div class="error">
+      Passwords do not match
+    </div> -->
+
+    <button type="submit" [disabled]="signupForm.invalid">
+      Sign Up
+    </button>
+
+    <p class="login-link">
+      Already have an account?
+      <a routerLink="/login">Login</a>
+    </p>
+
+  </form>
+</div>

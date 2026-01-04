@@ -1,0 +1,82 @@
+<div class="container">
+  <h2>Vehicle Master</h2>
+
+  <form [formGroup]="vehicleForm" (ngSubmit)="onSubmit()">
+
+    <!-- ROW 1 -->
+    <div class="row">
+      <div class="field">
+        <label>Vehicle Number</label>
+        <input formControlName="vehicleNumber" placeholder="MH12AB1234">
+      </div>
+
+      <div class="field">
+        <label>Vehicle Type</label>
+        <input formControlName="vehicleType" placeholder="Truck / Car">
+      </div>
+    </div>
+
+    <!-- ROW 2 -->
+    <div class="row">
+      <div class="field">
+        <label>Chassis Number</label>
+        <input formControlName="chassisNumber">
+      </div>
+
+      <div class="field">
+        <label>Engine Number</label>
+        <input formControlName="engineNumber">
+      </div>
+    </div>
+
+    <!-- ROW 3 -->
+    <div class="row">
+      <div class="field">
+        <label>Manufacturing Year</label>
+        <input type="number" formControlName="year">
+      </div>
+
+      <div class="field">
+        <label>Load Capacity (KG)</label>
+        <input type="number" formControlName="loadCapacity">
+      </div>
+    </div>
+
+    <!-- ROW 4 -->
+    <div class="row">
+      <div class="field">
+        <label>Make</label>
+        <input formControlName="make">
+      </div>
+
+      <div class="field">
+        <label>Model</label>
+        <input formControlName="model">
+      </div>
+    </div>
+
+    <!-- ROW 5 -->
+    <div class="row">
+      <div class="field">
+        <label>Body Type</label>
+        <input formControlName="bodyType">
+      </div>
+
+      <div class="field">
+        <label>Organisation</label>
+        <input formControlName="organisation">
+      </div>
+    </div>
+
+    <!-- FULL WIDTH -->
+    <div class="field">
+      <label>Device ID</label>
+      <input formControlName="deviceId">
+    </div>
+
+    <button type="submit" [disabled]="vehicleForm.invalid">
+      Save Vehicle
+    </button>
+
+  </form>
+</div>
