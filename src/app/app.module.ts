@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { UserModule } from './user/user.module';
 import { VehicleModule } from './vehicle/vehicle.module';
-import { SharedModule } from './shared/shared.module';
+// import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,7 @@ import { SharedModule } from './shared/shared.module';
     FormsModule,
     UserModule,
     VehicleModule,
-    SharedModule,
+    // SharedModule,
     HttpClientModule   
   ],
   bootstrap: [AppComponent]

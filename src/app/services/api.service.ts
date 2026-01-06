@@ -7,13 +7,13 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
-  private baseUrl = 'http://localhost:5215/api';
+  private baseUrl = 'https://localhost:7215/api';
 
   constructor(private http: HttpClient) { }
 
   // Example: GET API
   getTest(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/test`);
+    return this.http.get(`${this.baseUrl}/User`);
   }
 
   // Example: POST API

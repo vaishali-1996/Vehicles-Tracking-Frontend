@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -11,7 +13,7 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   showPassword = false;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -25,8 +27,20 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.loginForm.valid) {
-      console.log('Login Data:', this.loginForm.value);
-    }
+  if (this.loginForm.valid) {
+
+    // ✅ SET TOKEN FIRST
+    localStorage.setItem('token', 'dummy-token');
+
+    // ✅ THEN NAVIGATE
+    this.router.navigate(['/dashboard']);
+
+    console.log('Login Data:', this.loginForm.value);
   }
+}
+logout() {
+  localStorage.removeItem('token');
+  this.router.navigate(['/login']);
+}
+
 }
