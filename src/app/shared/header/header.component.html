@@ -5,12 +5,12 @@
 
 
   <div class="menu-container">
-    <button class="menu-btn" (click)="toggleMenu()">☰</button>
+    <button class="menu-btn" appClickOutside (click)="toggleMenu()" (clickOutside)="closeMenu()">☰</button>
     
     <div class="dropdown" *ngIf="showMenu">
       <a (click)="goToPage('users')">Users</a>
       <a (click)="goToPage('vehiclesList')">Vehicles</a>
-
+      <a (click)="goToPage('profile')">Profile</a>
       <a (click)="goToAddVehicle()"> Add Vehicle</a>
       <a (click)="logout()" > Logout</a>
     </div>

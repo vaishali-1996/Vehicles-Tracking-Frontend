@@ -20,6 +20,10 @@ export class HeaderComponent {
     this.showMenu = !this.showMenu;
   }
 
+  closeMenu() {
+  this.showMenu = false;
+}
+
 goToPage(page:any){
 this.toggleMenu();
     this.router.navigate(['dashboard/dashboard/'+page]);

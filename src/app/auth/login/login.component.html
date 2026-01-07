@@ -3,29 +3,67 @@
 
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
+    <!-- EMAIL -->
     <div class="field">
       <label>Email</label>
       <input
         type="email"
         formControlName="email"
         placeholder="Enter email"
-      >
+      />
+
+      <div class="error"
+        *ngIf="
+          loginForm.get('email')?.invalid &&
+          (loginForm.get('email')?.touched || loginForm.get('email')?.dirty)
+        ">
+        <small *ngIf="loginForm.get('email')?.errors?.['required']">
+          Email is required
+        </small>
+        <small *ngIf="
+          loginForm.get('email')?.errors?.['email'] ||
+          loginForm.get('email')?.errors?.['pattern']
+        ">
+          Enter a valid email address
+        </small>
+      </div>
     </div>
 
+    <!-- PASSWORD -->
     <div class="field">
       <label>Password</label>
+
       <div class="password-box">
         <input
           [type]="showPassword ? 'text' : 'password'"
           formControlName="password"
           placeholder="Enter password"
-        >
-      </div>
- <span class="toggle" (click)="togglePassword()">
+        />
+        <span class="toggle" (click)="togglePassword()">
           {{ showPassword ? 'Hide' : 'Show' }}
         </span>
+      </div>
+
+      <div class="error"
+        *ngIf="
+          loginForm.get('password')?.invalid &&
+          (loginForm.get('password')?.touched || loginForm.get('password')?.dirty)
+        ">
+        <small *ngIf="loginForm.get('password')?.errors?.['required']">
+          Password is required
+        </small>
+        <small *ngIf="loginForm.get('password')?.errors?.['minlength']">
+          Password must be at least 6 characters
+        </small>
+      </div>
     </div>
 
+    <!-- BACKEND ERROR -->
+    <div class="error" *ngIf="loginError">
+      <small class="text-danger">{{ loginError }}</small>
+    </div>
+
+    <!-- SUBMIT -->
     <button type="submit" [disabled]="loginForm.invalid">
       Login
     </button>

@@ -7,6 +7,7 @@ import { UserListComponent } from '../user/user-list/user-list.component';
 import { UserMasterComponent } from '../user/user-master/user-master.component';
 import { VehicleListComponent } from '../vehicle/vehicle-list/vehicle-list.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ProfileComponent } from '../user/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -18,7 +19,8 @@ const routes: Routes = [
       { path: 'dashboard/addUser', component: UserMasterComponent},
       { path: 'dashboard/editVehicle', component: VehicleMasterComponent },
       { path: 'dashboard/newVehicle', component: VehicleMasterComponent },
-      { path: 'dashboard/vehiclesList', component: VehicleListComponent }
+      { path: 'dashboard/vehiclesList', component: VehicleListComponent },
+      { path: 'dashboard/profile', component: ProfileComponent}
     ]
   }
 ];

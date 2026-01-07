@@ -16,7 +16,10 @@ export class UserListComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
+
     this.loadUsers();
+    console.log(localStorage.getItem('token'));
+    
   }
 
   loadUsers(): void {
