@@ -7,6 +7,7 @@ import { Vehicle } from '../shared/models/vehicle.model';
   providedIn: 'root'
 })
 export class VehicleService {
+   private vehicle: any;
 
   private apiUrl = 'https://localhost:7215/api/Vehicle';
 
@@ -30,5 +31,13 @@ export class VehicleService {
 
   deleteVehicle(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
+  setVehicle(vehicle: any) {
+    this.vehicle = vehicle;
+  }
+
+  getVehicle() {
+    return this.vehicle;
   }
 }

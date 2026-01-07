@@ -79,7 +79,7 @@ export class VehicleListComponent implements OnInit {
   }
 
   editVehicle(vehicle: any): void {
-    console.log('Edit vehicle:', vehicle);
-    this.router.navigate(['/dashboard/editVehicle']);
+  this.vehicleService.setVehicle(vehicle);
+    this.router.navigate(['dashboard/dashboard/editVehicle']);
   }
 }

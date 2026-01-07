@@ -3,9 +3,16 @@
     🚗 Vehicle Tracker
   </div>
 
-  <nav>
-    <a routerLink="dashboard/users" routerLinkActive="active">Users</a>
-    <a routerLink="dashboard/vehiclesList" routerLinkActive="active">Vehicles</a>
-    <a routerLink="dashboard/vehicles" routerLinkActive="active">Add Vehicle</a>
-  </nav>
+
+  <div class="menu-container">
+    <button class="menu-btn" (click)="toggleMenu()">☰</button>
+    
+    <div class="dropdown" *ngIf="showMenu">
+      <a (click)="goToPage('users')">Users</a>
+      <a (click)="goToPage('vehiclesList')">Vehicles</a>
+
+      <a (click)="goToAddVehicle()"> Add Vehicle</a>
+      <a (click)="logout()" > Logout</a>
+    </div>
+  </div>
 </header>

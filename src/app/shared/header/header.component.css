@@ -23,3 +23,50 @@ nav a.active {
   border-bottom: 2px solid #fff;
   padding-bottom: 2px;
 }
+.header {
+  height: 55px;
+  background: #1e293b;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+}
+
+.menu-container {
+  position: relative;
+}
+
+.menu-btn {
+  font-size: 22px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background: white;
+  color: black;
+  width: 150px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  border-radius: 4px;
+}
+
+.dropdown a {
+  display: block;
+  padding: 10px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.dropdown a:hover {
+  background: #f1f5f9;
+}
+
+.title {
+  margin-left: 15px;
+  font-size: 18px;
+}

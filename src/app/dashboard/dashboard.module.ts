@@ -13,10 +13,11 @@ const routes: Routes = [
     path: '',
     component: DashboardComponent,
     children: [
-      { path: '', redirectTo: 'vehiclesList', pathMatch: 'full' },
+      { path: '', redirectTo: 'dashboard/vehiclesList', pathMatch: 'full' },
       { path: 'dashboard/users', component: UserListComponent },
       { path: 'dashboard/addUser', component: UserMasterComponent},
       { path: 'dashboard/editVehicle', component: VehicleMasterComponent },
+      { path: 'dashboard/newVehicle', component: VehicleMasterComponent },
       { path: 'dashboard/vehiclesList', component: VehicleListComponent }
     ]
   }

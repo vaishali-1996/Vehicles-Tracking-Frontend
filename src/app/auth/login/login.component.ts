@@ -29,10 +29,8 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
   if (this.loginForm.valid) {
 
-    // ✅ SET TOKEN FIRST
     localStorage.setItem('token', 'dummy-token');
 
-    // ✅ THEN NAVIGATE
     this.router.navigate(['/dashboard']);
 
     console.log('Login Data:', this.loginForm.value);
