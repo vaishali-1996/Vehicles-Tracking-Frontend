@@ -69,15 +69,32 @@ export class SignupComponent implements OnInit {
     const payload = this.signupForm.value;
     delete payload.confirmPassword;
 
-    this.router.navigate(['/dashboard']);
+    setTimeout(() => {
+      this.router.navigate(['/dashboard']);
+    }, 3000);
+    
     this.UserService.createUser(payload).subscribe({
       next: () => {
-         this.router.navigate(['/dashboard']);
-        this.successMessage = 'Account created successfully';
+        this.showSuccess('Account created successfully');
+
+        
+          setTimeout(() => {
+            this.router.navigate(['/dashboard']);
+          }, 3000);
+
       },
       error: () => {
         this.errorMessage = 'Signup failed. Try again.';
       }
     });
   }
+
+  showSuccess(msg:string) {
+  this.successMessage = msg;
+
+  setTimeout(() => {
+    this.successMessage = '';
+  }, 3000);
+}
+
 }

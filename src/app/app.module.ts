@@ -9,11 +9,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { UserModule } from './user/user.module';
 import { VehicleModule } from './vehicle/vehicle.module';
+import { ClickOutsideDirective } from './directives/click-outside.directive';
 // import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ClickOutsideDirective,
   ],
   imports: [
     BrowserModule,

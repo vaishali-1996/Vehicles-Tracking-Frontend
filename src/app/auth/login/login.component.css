@@ -83,3 +83,9 @@ button:disabled {
   text-align: center;
   font-size: 14px;
 }
+.alert .fixed-top {
+  top: 60px;        /* adjust if navbar exists */
+  z-index: 9999;
+  /* width: 100%; */
+  border-radius: 0;
+}

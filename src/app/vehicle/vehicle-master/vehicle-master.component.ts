@@ -13,6 +13,7 @@ export class VehicleMasterComponent implements OnInit {
 
   vehicleForm!: FormGroup;
   vehicleID!: number; 
+   public successMessage = '';
 
   constructor(private fb: FormBuilder,
      private vehicleService: VehicleService,
@@ -34,32 +35,11 @@ export class VehicleMasterComponent implements OnInit {
       bodyType: [vehicleData?.bodyType || ''],
       organisationName: [vehicleData?.organisationName || ''],
       deviceID: [vehicleData?.deviceID || ''],
-      userID: [vehicleData?.userID || 1]  
+      userID: [vehicleData?.userID || 2]  
     });
       this.vehicleID = vehicleData?.vehicleID!;
 }
 
-//  onSubmit(): void {
-//   if (this.vehicleForm.invalid) {
-//     return;
-//   }
-
-//   const updatedVehicle: Vehicle = {
-//     vehicleID: this.vehicleID,   // ✅ ADD THIS
-//     ...this.vehicleForm.value
-//   };
-
-//   this.vehicleService.updateVehicle(this.vehicleID, updatedVehicle)
-//     .subscribe({
-//       next: () => {
-//         this.router.navigate(['dashboard/dashboard/vehiclesList']);
-//       },
-//       error: (err) => {
-//         console.error('Error updating vehicle:', err);
-//       }
-//     });
-//      this.vehicleService.setVehicle({});
-// }
 
 onSubmit1(): void {
   if (this.vehicleForm.invalid) {
@@ -76,8 +56,10 @@ onSubmit1(): void {
     this.vehicleService.updateVehicle(this.vehicleID, vehiclePayload)
       .subscribe({
         next: () => {
-          console.log('Vehicle updated successfully');
-          this.afterSave();
+          this.showSuccess('Vehicle Updated successfully');
+            setTimeout(() => {
+              this.afterSave();
+            }, 1500); 
         },
         error: (err) => {
           console.error('Error updating vehicle:', err);
@@ -89,8 +71,11 @@ onSubmit1(): void {
     this.vehicleService.createVehicle(vehiclePayload)
       .subscribe({
         next: () => {
-          console.log('Vehicle created successfully');
-          this.afterSave();
+          this.showSuccess('Vehicle added successfully');
+            setTimeout(() => {
+              this.afterSave();
+            }, 1500); 
+         
         },
         error: (err) => {
           console.error('Error creating vehicle:', err);
@@ -104,5 +89,12 @@ private afterSave(): void {
   this.router.navigate(['dashboard/dashboard/vehiclesList']);
 }
 
+showSuccess(msg:string) {
+  this.successMessage = msg;
+
+  setTimeout(() => {
+    this.successMessage = '';
+  }, 3000);
+}
 
 }

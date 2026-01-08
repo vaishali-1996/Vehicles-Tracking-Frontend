@@ -13,6 +13,9 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   showPassword = false;
   errorMessage = '';
+   public showSuccessAlert = false;
+  public successMessage = '';
+
 
   constructor(
     private fb: FormBuilder,
@@ -51,7 +54,11 @@ onSubmit(): void {
   this.authService.login(this.loginForm.value).subscribe({
     next: (res) => {
       this.authService.setToken(res.token);
-      this.router.navigate(['/dashboard']);
+      this.showSuccess('login successfully');     
+  
+  setTimeout(() => {
+    this.router.navigate(['/dashboard']);
+  }, 1500); 
     },
     error: () => {
       this.loginError = 'Invalid email or password';
@@ -59,6 +66,13 @@ onSubmit(): void {
   });
 }
 
+showSuccess(msg:string) {
+  this.successMessage = msg;
+
+  setTimeout(() => {
+    this.successMessage = '';
+  }, 3000);
+}
 
   logout(): void {
     this.authService.logout();

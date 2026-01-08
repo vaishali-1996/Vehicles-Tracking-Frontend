@@ -21,23 +21,23 @@ export class HeaderComponent {
   }
 
   closeMenu() {
-  this.showMenu = false;
-}
+    this.showMenu = false;
+  }
 
-goToPage(page:any){
-this.toggleMenu();
-    this.router.navigate(['dashboard/dashboard/'+page]);
-
-}
+  goToPage(page: string) {
+    this.closeMenu();
+    this.router.navigate(['dashboard/dashboard/' + page]);
+  }
 
   goToAddVehicle() {
-    this.showMenu = false;
+    this.closeMenu();
     this.router.navigate(['dashboard/dashboard/newVehicle']);
   }
 
   logout() {
-    this.showMenu = false;
-    this.authService.logout(); // clear token/session
+    this.closeMenu();
+    this.authService.logout();
     this.router.navigate(['/login']);
   }
 }
+
