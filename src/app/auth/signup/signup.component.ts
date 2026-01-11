@@ -79,7 +79,7 @@ export class SignupComponent implements OnInit {
 
         
           setTimeout(() => {
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['/login']);
           }, 3000);
 
       },

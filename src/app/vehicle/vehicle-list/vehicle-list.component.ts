@@ -23,10 +23,10 @@ export class VehicleListComponent implements OnInit {
     private fb: FormBuilder,
     private vehicleService: VehicleService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    this.searchForm = this.fb.group({
+      this.searchForm = this.fb.group({
       searchText: ['']
     });
 
@@ -66,8 +66,13 @@ export class VehicleListComponent implements OnInit {
     return this.filteredVehicles.slice(start, start + this.pageSize);
   }
 
+  get totalPages(): number {
+    return Math.ceil(this.filteredVehicles.length / this.pageSize);
+  }
+
+
   nextPage(): void {
-    if (this.currentPage * this.pageSize < this.filteredVehicles.length) {
+    if (this.currentPage < this.totalPages) {
       this.currentPage++;
     }
   }
@@ -79,8 +84,8 @@ export class VehicleListComponent implements OnInit {
   }
 
   editVehicle(vehicle: any): void {
-    
-  this.vehicleService.setVehicle(vehicle);
+
+    this.vehicleService.setVehicle(vehicle);
     this.router.navigate(['dashboard/dashboard/editVehicle']);
   }
 }

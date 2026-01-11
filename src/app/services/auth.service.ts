@@ -13,13 +13,22 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
    private tokenKey = 'token';
+   private userIdKey = 'userIdKey';
 
   getToken(): string | null {
     return localStorage.getItem(this.tokenKey);
   }
 
-  setToken(token: string): void {
+  getUserIdFromLocalStorage(){
+    const userIdStr = localStorage.getItem(this.userIdKey);
+    return userIdStr ? Number(userIdStr) : null;
+  }
+
+  setToken(token: string, userID: Number): void {
     localStorage.setItem(this.tokenKey, token);
+     if (userID) {
+    localStorage.setItem(this.userIdKey,  userID.toString());
+  }
   }
 
   login(data: any): Observable<any> {
@@ -32,5 +41,6 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('token');
+    localStorage.removeItem('userIdKey');
   }
 }

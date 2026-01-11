@@ -53,18 +53,30 @@ onSubmit(): void {
 
   this.authService.login(this.loginForm.value).subscribe({
     next: (res) => {
-      this.authService.setToken(res.token);
-      this.showSuccess('login successfully');     
-  
-  setTimeout(() => {
-    this.router.navigate(['/dashboard']);
-  }, 1500); 
+      this.authService.setToken(res.token, res.userID);
+      this.showSuccess('Login successful');
+
+      setTimeout(() => {
+        this.router.navigate(['/dashboard']);
+      }, 1500);
     },
-    error: () => {
-      this.loginError = 'Invalid email or password';
+    error: (err) => {
+      if (err.status === 404) {
+        this.loginError = 'User not registered. Please register first.';
+        setTimeout(() => {          
+          this.router.navigate(['/signup']);
+        }, 1000);
+      } 
+      else if (err.status === 401) {
+        this.loginError = 'Invalid password';
+      } 
+      else {
+        this.loginError = 'Something went wrong. Try again later.';
+      }
     }
   });
 }
+
 
 showSuccess(msg:string) {
   this.successMessage = msg;

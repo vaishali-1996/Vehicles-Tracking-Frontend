@@ -40,17 +40,24 @@
   </table>
 
   <!-- PAGINATION -->
-  <div class="pagination">
-    <button (click)="prevPage()" [disabled]="currentPage === 1">
-      Prev
-    </button>
+<div class="pagination">
+  <button
+    (click)="prevPage()"
+    [disabled]="currentPage === 1 || totalPages === 0">
+    Prev
+  </button>
 
-    <span>Page {{ currentPage }}</span>
+  <span>
+    Page {{ currentPage }} of {{ totalPages || 1 }}
+  </span>
 
-    <button
-      (click)="nextPage()"
-      [disabled]="currentPage * pageSize >= filteredVehicles.length">
-      Next
-    </button>
-  </div>
+  <button
+    (click)="nextPage()"
+    [disabled]="currentPage >= totalPages || totalPages === 0">
+    Next
+  </button>
+</div>
+
+
+
 </div>
